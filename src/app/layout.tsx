@@ -22,7 +22,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <WalletContextProvider>
-      <html lang="en" className={`${geist.variable}`}>
+      <html
+        lang="en"
+        className={`${geist.variable}`}
+        suppressHydrationWarning={true}
+      >
         <body>
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </body>
