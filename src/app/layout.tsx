@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { WalletContextProvider } from "@/providers/walletContextProvider";
+import QueryClientProvider from "@/providers/queryClient";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -28,7 +29,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <body>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+          <QueryClientProvider>
+            <TRPCReactProvider>{children}</TRPCReactProvider>
+          </QueryClientProvider>
         </body>
       </html>
     </WalletContextProvider>
