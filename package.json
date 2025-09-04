@@ -18,6 +18,7 @@
   "dependencies": {
     "@irys/web-upload": "^0.0.15",
     "@irys/web-upload-solana": "^0.1.8",
+    "@lit-protocol/contracts-sdk": "^7.3.0",
     "@lit-protocol/encryption": "^7.3.0",
     "@lit-protocol/lit-node-client": "^7.3.0",
     "@radix-ui/react-slot": "^1.2.3",
@@ -33,6 +34,7 @@
     "@trpc/server": "^11.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "graphql": "^16.11.0",
     "lucide-react": "^0.542.0",
     "next": "^15.2.3",
     "react": "^19.0.0",

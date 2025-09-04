@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useIrysStorage } from "@/hooks/useIrysStore";
+import { useIrys } from "@/hooks/useIrys";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 export const DocumentUpload = () => {
   const wallet = useWallet();
-  const { uploadFile } = useIrysStorage(wallet);
-  const { connected } = wallet;
+  const { uploadFile, loading, error } = useIrys(wallet);
 
   const [file, setFile] = useState<File | null>(null);
   const [url, setUrl] = useState<string | null>(null);
@@ -17,7 +16,9 @@ export const DocumentUpload = () => {
     if (!file) return;
     try {
       const result = await uploadFile(file);
-      setUrl(result.url);
+      if (result) {
+        setUrl(result.url);
+      }
     } catch (err) {
       console.error("Upload failed:", err);
     }
@@ -25,23 +26,23 @@ export const DocumentUpload = () => {
 
   return (
     <div>
-      {!connected && <p>⚠️ Connect Phantom wallet first</p>}
-
       <input
         type="file"
         onChange={(e) => setFile(e.target.files?.[0] ?? null)}
       />
 
-      <Button onClick={handleUpload} disabled={!file || !connected}>
-        Upload
+      <Button onClick={handleUpload} disabled={!file || loading}>
+        {loading ? "Uploading..." : "Upload"}
       </Button>
+
+      {error && <p className="text-red-500">{error}</p>}
 
       {url && (
         <div>
           <p>
             ✅ Uploaded!{" "}
             <a href={url} target="_blank" rel="noopener noreferrer">
-              View on Arweave
+              View on Irys
             </a>
           </p>
         </div>

@@ -11,7 +11,7 @@ export const EncryptFile = async (
 
   const { ciphertext, dataToEncryptHash } = await encryptFile(
     {
-      file: file,
+      file,
       unifiedAccessControlConditions,
       chain: "solana",
     },
