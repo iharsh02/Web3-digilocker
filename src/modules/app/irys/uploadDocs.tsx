@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useIrysStorage } from "@/hooks/useIrysStore";
 import { useWallet } from "@solana/wallet-adapter-react";
 
@@ -31,9 +32,9 @@ export const DocumentUpload = () => {
         onChange={(e) => setFile(e.target.files?.[0] ?? null)}
       />
 
-      <button onClick={handleUpload} disabled={!file || !connected}>
+      <Button onClick={handleUpload} disabled={!file || !connected}>
         Upload
-      </button>
+      </Button>
 
       {url && (
         <div>

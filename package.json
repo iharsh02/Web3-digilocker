@@ -18,6 +18,8 @@
   "dependencies": {
     "@irys/web-upload": "^0.0.15",
     "@irys/web-upload-solana": "^0.1.8",
+    "@lit-protocol/encryption": "^7.3.0",
+    "@lit-protocol/lit-node-client": "^7.3.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@solana/wallet-adapter-base": "^0.9.27",
     "@solana/wallet-adapter-react": "^0.15.39",
